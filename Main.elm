@@ -12,6 +12,18 @@ type alias Model =
     }
 
 
+
+{-
+   -- Is the same as below Model 0 0 Nothing
+      initModel =
+        { calories = 0
+        , input = 0
+        , error = Nothing
+        }
+
+-}
+
+
 initModel : Model
 initModel =
     Model 0 0 Nothing
@@ -27,7 +39,10 @@ update : Msg -> Model -> Model
 update msg model =
     case msg of
         AddCalorie ->
-            { model | calories = model.input }
+            { model
+                | calories = model.calories + model.input
+                , input = 0
+            }
 
         Clear ->
             initModel
